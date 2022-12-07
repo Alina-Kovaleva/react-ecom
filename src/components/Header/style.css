@@ -1,0 +1,77 @@
+@media (min-width: 1024px) {
+  .lg145 {
+    width: 145px;
+  }
+}
+
+@media (min-width: 768px) {
+  .md105 {
+    width: 105px;
+  }
+  .mdje {
+    justify-content: space-evenly;
+  }
+}
+
+.header-container {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  position: sticky;
+  z-index: 50;
+  padding: 0.75rem;
+  top: 0px;
+  margin-top: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 85px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.search {
+  display: flex;
+  background-color: rgba(243, 244, 246);
+  flex-grow: 1;
+  align-items: center;
+  border-width: 2px;
+  border-radius: 1rem;
+  border-color: rgb(107, 114, 128);
+  max-width: 32rem;
+  padding: 0.5rem;
+  justify-content: space-between;
+}
+.search-icon {
+  width: 1.75rem;
+  text-align: center;
+}
+input:focus {
+  border: none;
+  outline: none;
+}
+.search-input {
+  width: 90%;
+  background-color: rgb(243, 244, 246);
+}
+
+.sign-cart {
+  display: flex;
+  margin-left: 0.5rem;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.sing-in {
+  color: rgb(107, 114, 128);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cart-icon {
+  width: 2.5rem;
+  text-align: center;
+}
