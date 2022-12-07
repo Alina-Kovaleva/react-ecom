@@ -8,14 +8,19 @@ const textCrop = (str, n) => {
   return str.length > n ? str.substr(0, n - 1) + '...' : str;
 };
 
-function WatchCard(props) {
+function MobileCard(props) {
   return (
     <div className="card-wrap">
       <img className="card-img" alt={props.title} src={props.image} />
       <h4>{props.title}</h4>
-      <div className="mb-5">
-        <Currency quantity={props.price} currency="EUR" />
-      </div>
+      {props.price !== null ? (
+        <div className="mb-5">
+          <Currency quantity={props.price} currency="EUR" />
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className="rating-wrap">
         <div className="rating">
           <ReactStars value={props.rating} size={25} color2={'#ffd700'} />
@@ -27,13 +32,20 @@ function WatchCard(props) {
         </div>
       </div>
       <div className="card-body">
-        <div>
-          <ul>
-            {props.storePromotions.map((item) => {
-              return <li>{textCrop(item.promotionText, 40)}</li>;
-            })}
-          </ul>
-        </div>
+        {props.storePromotions != null ? (
+          <div>
+            <ul>
+              {props.storePromotions.map((item) => {
+                return (
+                  <li className="marked">{textCrop(item.promotionText, 40)}</li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          <></>
+        )}
+
         <div>
           <ul>
             {props.localBenefitList.map((item) => {
@@ -47,4 +59,4 @@ function WatchCard(props) {
   );
 }
 
-export { WatchCard };
+export { MobileCard };

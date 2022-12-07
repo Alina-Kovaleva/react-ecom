@@ -4,7 +4,8 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 import './style.css';
-export default function Header() {
+
+function Header() {
   return (
     <div className="header-container mdje">
       <div className="mt-2">
@@ -44,3 +45,5 @@ export default function Header() {
     </div>
   );
 }
+
+export { Header };

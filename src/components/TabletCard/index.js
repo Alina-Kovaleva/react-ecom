@@ -8,7 +8,7 @@ const textCrop = (str, n) => {
   return str.length > n ? str.substr(0, n - 1) + '...' : str;
 };
 
-function WatchCard(props) {
+function TabletCard(props) {
   return (
     <div className="card-wrap">
       <img className="card-img" alt={props.title} src={props.image} />
@@ -30,7 +30,9 @@ function WatchCard(props) {
         <div>
           <ul>
             {props.storePromotions.map((item) => {
-              return <li>{textCrop(item.promotionText, 40)}</li>;
+              return (
+                <li className="marked">{textCrop(item.promotionText, 40)}</li>
+              );
             })}
           </ul>
         </div>
@@ -47,4 +49,4 @@ function WatchCard(props) {
   );
 }
 
-export { WatchCard };
+export { TabletCard };

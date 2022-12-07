@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Header from '../../components/Header';
+
+import { Header, WatchCard, MobileCard, TabletCard } from '../../components';
 
 export default function Home() {
   const API_URL =
@@ -19,7 +20,76 @@ export default function Home() {
   return (
     <div>
       <Header />
-      Home
+      <div className="products-wrap">
+        {!data
+          ? 'Loading'
+          : data.map((item) => {
+              if (item.categorySubTypeEngName === 'Galaxy Watch') {
+                return (
+                  <>
+                    {item.modelList.map((model) => {
+                      return (
+                        <WatchCard
+                          key={model.id}
+                          title={model.displayName}
+                          image={model.galleryImage[0]}
+                          localBenefitList={item.localBenefitList}
+                          stock={model.ctaType}
+                          rating={model.ratings}
+                          price={model.price}
+                          storePromotions={model.storePromotions}
+                          reviewCount={model.reviewCount}
+                        />
+                      );
+                    })}
+                  </>
+                );
+              } else if (
+                item.categorySubTypeEngName === 'Galaxy Z' ||
+                item.categorySubTypeEngName === 'Galaxy S'
+              ) {
+                return (
+                  <>
+                    {item.modelList.map((model) => {
+                      return (
+                        <MobileCard
+                          key={model.id}
+                          title={model.displayName}
+                          stock={model.ctaType}
+                          price={model.price}
+                          rating={model.ratings}
+                          reviewCount={model.reviewCount}
+                          storePromotions={model.storePromotions}
+                          localBenefitList={item.localBenefitList}
+                          image={model.galleryImage[0]}
+                        />
+                      );
+                    })}
+                  </>
+                );
+              } else if (item.categorySubTypeEngName === 'Galaxy Tab S') {
+                return (
+                  <>
+                    {item.modelList.map((model) => {
+                      return (
+                        <TabletCard
+                          key={item.id}
+                          title={item.fmyMarketingName}
+                          image={model.galleryImage[0]}
+                          localBenefitList={item.localBenefitList}
+                          storePromotions={model.storePromotions}
+                          price={model.price}
+                          stock={model.ctaType}
+                          rating={model.ratings}
+                          reviewCount={model.reviewCount}
+                        />
+                      );
+                    })}
+                  </>
+                );
+              }
+            })}
+      </div>
     </div>
   );
 }
